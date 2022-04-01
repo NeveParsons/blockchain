@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  margin: 50px;
 }
 
 .App-logo {
@@ -14,18 +14,86 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: lightslategray;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.blocks{
+  padding: 0;
+}
+
+.blockInfo{
+  border-collapse: separate;
+  border-spacing: 15px;
+  table-layout: auto;
+  vertical-align: text-top;
+}
+
+.blockInfo td {
+  vertical-align: top;
+}
+
+.generateButton {
+  height: 50px;
+  font-size: 15px;
+  background-color: lightgray;
+  border-radius: 8px;
+  color: black;
+  border-color: black;
+  font-family: inherit;
+}
+
+.hide {
+  display: none;
+}
+
+.line {
+  border: 3px solid black;
+  width: 50px;
+  padding: 0;
+}
+
+.textbox {
+  padding: 10px;
+  height: max-content;
+  position: 0;
+  left: 0;
+  outline: none;
+  border: 1px solid #cdcdcd;
+  border-color: rgba(0,0,0,.15);
+  background-color: white;
+  font-size: 16px;
+  max-width: 480px;
+}
+
+.blockbox {
+  padding: 10px;
+  height: max-content;
+  position: relative;
+  left: 0;
+  outline: none;
+  border: 1px solid #cdcdcd;
+  border-color: rgba(0,0,0,.15);
+  background-color: white;
+  font-size: 16px;
+  min-width: 150px;
+  min-height: 150px;
+}
+
+.textfield {
+  width: 500px;
+  min-width: 200px;
+  
+}
+
+.info:hover + .hide {
+  display: block;
+  color: black
 }
 
 @keyframes App-logo-spin {
