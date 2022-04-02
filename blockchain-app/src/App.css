@@ -1,5 +1,5 @@
 .App {
-  margin: 50px;
+  background-color: white;
 }
 
 .App-logo {
@@ -14,17 +14,14 @@
 }
 
 .App-header {
+  margin-left: 50px;
   display: flex;
   font-size: calc(10px + 2vmin);
-  color: lightslategray;
+  color: #15cdfc;
 }
 
 .App-link {
   color: #61dafb;
-}
-
-.blocks{
-  padding: 0;
 }
 
 .blockInfo{
@@ -32,10 +29,23 @@
   border-spacing: 15px;
   table-layout: auto;
   vertical-align: text-top;
+  margin: 50px;
+}
+
+h4 {
+  margin-left: 70px;
 }
 
 .blockInfo td {
   vertical-align: top;
+  padding-right: 20px;
+  border-collapse: separate;
+  border-spacing: 15px;
+
+}
+
+.blocks {
+  margin: 50px;
 }
 
 .generateButton {
@@ -46,6 +56,21 @@
   color: black;
   border-color: black;
   font-family: inherit;
+  padding: 10px;
+  margin-right: 10px;
+  width: 245px;
+}
+
+.updateBlock{
+  height: 30px;
+  font-size: 15px;
+  background-color: lightgray;
+  border-radius: 8px;
+  color: black;
+  border-color: black;
+  font-family: inherit;
+  margin-right: 10px;
+  width: 100%;
 }
 
 .hide {
@@ -57,6 +82,7 @@
   width: 50px;
   padding: 0;
 }
+
 
 .textbox {
   padding: 10px;
@@ -81,19 +107,59 @@
   border-color: rgba(0,0,0,.15);
   background-color: white;
   font-size: 16px;
-  min-width: 150px;
+  max-width: 150px;
+  min-width: 170px;
+  max-height: 300px;
   min-height: 150px;
+  text-align: center;
+  overflow-wrap: break-word;
+  font-size: 14px;
 }
+
+.messageBox {
+  padding: 10px;
+  height: max-content;
+  position: relative;
+  left: 0;
+  outline: none;
+  border-color: rgba(0,0,0,.15);
+  background-color: white;
+  text-align: center;
+  overflow-wrap: break-word;
+  font-size: 14px;
+  width: 100%;
+  max-width: 180px;
+}
+
 
 .textfield {
   width: 500px;
   min-width: 200px;
+  background-color: white;
+  border-color: #15cdfc;
   
 }
 
 .info:hover + .hide {
   display: block;
   color: black
+}
+
+.info:hover + .hide {
+  display: block;
+  color: black
+}
+
+.hackinputData {
+  max-width: 80px;
+  padding: 2px;
+  margin: 7px;
+}
+
+.hackinputSN {
+  max-width: 34px;
+  padding: 2px;
+  margin: 7px;
 }
 
 @keyframes App-logo-spin {
