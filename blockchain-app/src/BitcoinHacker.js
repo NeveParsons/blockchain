@@ -3,39 +3,67 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import sjcl from 'sjcl'
 import BlockChainStore from './BlockChainStore';
+import { json } from 'sjcl';
 
 function BitcoinHacker() {
 
-  const [data, setData] = React.useState(null)
-  const [serialNum, setserialNum] = React.useState(0)
-  const [magicNum, setmagicNum] = React.useState(null)
-  const [hash, sethash] = React.useState(null)
-  const [prevHash, setprevHash] = React.useState("null")
   const [blockChain, setBlockChain] = React.useState(BlockChainStore.getChain())
 
  
-  function invalidNewBlockHash() {
-    let hashStr = `${data}+${prevHash}+${serialNum}`
-    let newhash = myHash(hashStr)
+  function invalidNewBlockHash(newhash, magicNum) {
     if(newhash.startsWith(magicNum)) {
-      return false;
+      return;
     }
-    return true;
-    
+    return (
+      <td class="messageBox">error</td>
+    ) 
   }
 
-  function myHash(str) {
-    const myBitArray = sjcl.hash.sha256.hash(str)
+
+  function hashString(data, prevHash, serialNum) {
+    console.log(`${data}+${prevHash}+${serialNum}`)
+    let hashStr = `${data}+${prevHash}+${serialNum}`
+    const myBitArray = sjcl.hash.sha256.hash(hashStr)
     return sjcl.codec.hex.fromBits(myBitArray)
   }
 
-  function updateBlock() {
-    if(invalidNewBlockHash()) {
-      return(
-        <div class="messageBox">The Blocks new hash no longer starts with the magic number change the serial number and try again</div>
-      )
+ function updateBlock(block, index) {
+    let data = block.data
+    let serialNum = block.sn
+    if(document.getElementById(`data${index}`) != null) {
+      if (document.getElementById(`data${index}`).value != null){
+        data = document.getElementById(`data${index}`).value;
+      }
     }
-  
+    if(document.getElementById(`sn${index}`) != null) {
+      if (document.getElementById(`sn${index}`).value != null){
+        data = document.getElementById(`sn${index}`).value;
+      }
+    }
+    let hash = hashString(data, block.ph, serialNum)
+    while(hash == null) {
+      //busy wait
+    }
+    let newblock = 
+      {
+        dv: data,
+        sn: serialNum, 
+        ph: block.ph,
+        nh: hash,
+        mn: block.mn
+      }
+    
+    BlockChainStore.replaceBlock(index, newblock)
+    setBlockChain(BlockChainStore.getChain())
+  }
+
+  function isHashValid(block) {
+    if(block.nh.startsWith(block.mn)) {
+      return;
+    }
+    return (
+      <td class="messageBox">error</td>
+    )
   }
 
   function Block(props) {
@@ -48,11 +76,11 @@ function BitcoinHacker() {
               <td>
               <div class="blockbox">
                   <label> Data:
-                      <input class="hackinputData" type="text" placeholder={props.data} onChange={e => props.setData(e.target.value)}></input><br></br>
+                      <input class="hackinputData" id={`data${props.key}`} type="text" placeholder={props.data} onChange={updateBlock(props.block, props.key)}></input><br></br>
                   </label>
   
                   <label> Serial Number:
-                      <input class="hackinputSN" type="integer" placeholder={props.serialNum} onChange={e => props.setSN(e.target.value)}></input><br></br>
+                      <input class="hackinputSN" id={`sn${props.key}`} type="integer" placeholder={props.serialNum} onChange={updateBlock(props.block, props.key)}></input><br></br>
                   </label>
   
                   <div class="info">Magic Number: {props.magicNum}</div><br></br>
@@ -67,11 +95,14 @@ function BitcoinHacker() {
           </tr>
           <tr>
             <td></td>
-            <td><button className='updateBlock'>Update Block</button></td>
+            <td><button className='updateBlock' onClick={updateBlock(props.block, props.key)}>Update Block</button></td>
           </tr>
           <tr>
             <td></td>
-            <td>{updateBlock()}</td>
+            {isHashValid(BlockChainStore.getBlock(props.key))}
+          </tr>
+
+          <tr>
           </tr>
       </td>
     )
@@ -85,7 +116,7 @@ function BitcoinHacker() {
       <table class='blocks'>
         <tr>
         {blockChain.map((block, index)=> {
-          return <Block data={block.dv} serialNum={block.sn} prevHash={block.ph} newHash={block.nh} magicNum={block.mn} setData={setData} setSN={setserialNum}/>
+          return <Block key={index} data={block.dv} serialNum={block.sn} prevHash={block.ph} newHash={block.nh} magicNum={block.mn} block={block}/>
         })}
         </tr>
       </table>

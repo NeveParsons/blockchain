@@ -15,16 +15,13 @@ function BitcoinMiner() {
 
   function newBlockHash() {
     let hashStr = `${data}+${prevHash}+${serialNum}`
-    console.log("hash1: " + newhash)
+    console.log(`${data}+${prevHash}+${serialNum}  curHash: ${newhash}`)
     setnewhash(myHash(hashStr))
-    console.log("hash2: " + newhash)
-    
-    
   }
 
   function findValidHash() {
-      setserialNum(Number.parseInt(serialNum) + 1)
       newBlockHash()
+      setserialNum(Number.parseInt(serialNum) + 1)
       
   }
 
@@ -34,7 +31,7 @@ function BitcoinMiner() {
       BlockChainStore.addBlock(
           {
             dv: data,
-            sn: serialNum, 
+            sn: serialNum -1, 
             ph: prevHash,
             nh: newhash,
             mn: magicNum
@@ -45,10 +42,12 @@ function BitcoinMiner() {
     }
   }
 
-
   function myHash(str) {
     const myBitArray = sjcl.hash.sha256.hash(str)
     const myHash = sjcl.codec.hex.fromBits(myBitArray)
+    while(myHash == null) {
+      //busy wait
+    }
     return myHash;
   }
 
