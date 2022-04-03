@@ -13,6 +13,8 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
+        <Route path='/' exact component={About}/>
+        <Route path='/about' exact component={About}/>
         <Route path='/miner' component={BitcoinMiner}/>
         <Route path='/hacker' component={BitcoinHacker}/>
       </Switch>

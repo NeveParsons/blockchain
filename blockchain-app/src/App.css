@@ -1,14 +1,16 @@
 .App {
-  height:1000px;
-  background-color: #F6F2FF;
+  height:1600px;
+  background-color: #EEEEEE;
+  background-size: cover;
   
 }
 
 .App-header {
   margin-left: 50px;
+  margin-bottom: 20px;
   display: flex;
   font-size: calc(10px + 2vmin);
-  color: #179DDE;
+  color: #6FB2D2;
 }
 
 .blockInfo{
@@ -16,30 +18,75 @@
   border-spacing: 15px;
   table-layout: auto;
   vertical-align: text-top;
-  margin: 50px;
+  margin-left: 50px;
+  margin-bottom: 20px;
 }
 
-h4 {
+.hashInfo {
+  margin-left: 70px;
+  margin-bottom: 20px;
+}
+
+.information {
+  top: 200px;
+  left: 950px;
+  margin-right: 100px;
+  position: absolute;
+}
+
+.information2 {
+  top: 500px;
+  left: 950px;
+  margin-right: 100px;
+  position: absolute;
+}
+
+
+.informationHacker {
+  left: 70px;
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-right: 50px;
+}
+
+.tablefixed td{
+  width: 1000px;
+  vertical-align: text-top;
+}
+
+
+h4{
   margin-left: 70px;
 }
 
+.about {
+  margin-left: 50px;
+}
+
+.valid {
+  color: #85C88A;
+}
+
+.invalidHash {
+  color: #E85D5D;
+}
+
 .blockInfo td {
-  vertical-align: top;
-  padding-right: 20px;
+  vertical-align: auto;
   border-collapse: separate;
-  border-spacing: 15px;
 
 }
 
 .blocks {
-  margin: 50px;
+  margin-left: 50px;
+  margin-top: 20px;
   
 }
 
 .generateButton {
   height: 50px;
   font-size: 15px;
-  background-color: rgb(102, 51, 153, 0.3);
+  background-color: #EBD671;
   border-radius: 8px;
   color: black;
   border-color: black;
@@ -52,7 +99,19 @@ h4 {
 .updateBlock{
   height: 30px;
   font-size: 15px;
-  background-color: rgb(102, 51, 153, 0.3);;
+  background-color: #EBD671;;
+  border-radius: 8px;
+  color: black;
+  border-color: black;
+  font-family: inherit;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.description{
+  height: 30px;
+  font-size: 12px;
+  background-color: #EBD671;;
   border-radius: 8px;
   color: black;
   border-color: black;
@@ -93,7 +152,7 @@ h4 {
   outline: none;
   border: 1px solid #cdcdcd;
   border-color: rgba(0,0,0,.15);
-  background-color: rgb(102, 51, 153, 0.7);;
+  background-color: #85C88A;
   font-size: 16px;
   max-width: 150px;
   min-width: 170px;
@@ -104,6 +163,29 @@ h4 {
   font-size: 14px;
 }
 
+.blockboxHacker {
+  padding: 10px;
+  height: max-content;
+  position: relative;
+  left: 0;
+  outline: none;
+  border: 1px solid #cdcdcd;
+  border-color: rgba(0,0,0,.15);
+  background-color: #85C88A;
+  font-size: 16px;
+  min-width: 240px;
+  min-height: 240px;
+  max-width: 230px;
+  max-height: 230px;
+  text-align: center;
+  overflow-wrap: break-word;
+  font-size: 14px;
+}
+
+.invalid {
+  background-color: #E85D5D;
+}
+
 .messageBox {
   padding: 10px;
   height: max-content;
@@ -111,7 +193,7 @@ h4 {
   left: 0;
   outline: none;
   border-color: rgba(0,0,0,.15);
-  background-color: white;
+  background-color: transparent;
   text-align: center;
   overflow-wrap: break-word;
   font-size: 14px;
@@ -139,17 +221,27 @@ h4 {
 }
 
 .hackinputData {
-  max-width: 80px;
+  max-width: 200px;
   padding: 2px;
   margin: 7px;
-  background-color: #F6F2FF;
+  background-color: transparent;
+  border-radius: 6px;
 }
 
 .hackinputSN {
-  max-width: 34px;
+  max-width: 120px;
   padding: 2px;
   margin: 7px;
-  background-color: #F6F2FF;
+  background-color: transparent;
+  border-radius: 6px
+}
+
+.hackinputPH{
+  overflow-wrap: break-word;
+  padding: 2px;
+  margin: 7px;
+  background-color: transparent;
+  border-radius: 6px;
 }
 
 @keyframes App-logo-spin {

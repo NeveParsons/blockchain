@@ -16,6 +16,9 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
+        <NavLink to='/about' activeStyle>
+            About
+          </NavLink>
           <NavLink to='/miner' activeStyle>
             Miner
           </NavLink>
