@@ -3,11 +3,27 @@
 class BlockChain {
     constructor() {
         this.chain = []
+        this.prevHash = null;
     }
 
     addBlock(block) {
-        this.chain.unshift(block);
+        let len = this.chain.length
+        if(len == 0) {
+            this.chain.unshift(block);
+        }
+        else if(this.chain[len -1].nh != block.nh) {
+            this.chain.unshift(block);
+        }
     } 
+
+    blockAlreadyExists(hash) {
+        for(let i = 0; i < this.chain.length; i++) {
+            if(this.chain[i].nh == hash) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     replaceBlock(index, block) {
         this.chain[index] = block;
@@ -35,26 +51,26 @@ class BlockChain {
         return true;
     }
 
+    setPrevHash(hash) {
+        this.prevHash = hash;
+    }
+
     getBlock(index) {
         return this.chain[index]
+    }
+
+    getPrevHash() {
+        let len = this.chain.length
+        if(len == 0) {
+            return null
+        }
+        return this.chain[0].nh
     }
 
     getChain() {
         return this.chain;
     }
 
-    getMagicNum() {
-        return this.magicNum;
-    }
-
-    getSerialNum() {
-        return this.serialNum;
-    }
-
-    getData(){
-        return this.data;
-    }
-    
 }
 
 export default new BlockChain();

@@ -1,74 +1,76 @@
 .App {
-  height:1600px;
+  min-height:940px;
+  min-width: max-content;
+  max-height: max-content;
   background-color: #EEEEEE;
   background-size: cover;
+  position: "sticky"
   
 }
 
 .App-header {
-  margin-left: 50px;
+  margin-left: 70px;
   margin-bottom: 20px;
   display: flex;
   font-size: calc(10px + 2vmin);
-  color: #6FB2D2;
+  color: #10c4f1;
 }
+
 
 .blockInfo{
   border-collapse: separate;
   border-spacing: 15px;
   table-layout: auto;
   vertical-align: text-top;
-  margin-left: 50px;
+  margin-left: 80px;
   margin-bottom: 20px;
 }
 
 .hashInfo {
-  margin-left: 70px;
+  margin-left: 100px;
   margin-bottom: 20px;
+  width: 870px;
+  overflow-wrap: break-word;
+
 }
 
 .information {
-  top: 200px;
-  left: 950px;
-  margin-right: 100px;
+  top: 150px;
+  left: 1000px;
+  min-width: 800px;
+  max-width: 800px;
   position: absolute;
-}
-
-.information2 {
-  top: 500px;
-  left: 950px;
-  margin-right: 100px;
-  position: absolute;
+  table-layout:fixed;
 }
 
 
 .informationHacker {
-  left: 70px;
-  margin-left: 50px;
-  margin-top: 50px;
-  margin-right: 50px;
+  margin-left: 90px;
+
 }
 
-.tablefixed td{
-  width: 1000px;
+.informationHacker td{
   vertical-align: text-top;
+  width: 45vw;
 }
 
 
 h4{
-  margin-left: 70px;
+  margin-left: 95px;
 }
 
 .about {
-  margin-left: 50px;
+  margin-left: 24vw;
+  width: 50vw;
 }
+
 
 .valid {
   color: #85C88A;
 }
 
 .invalidHash {
-  color: #E85D5D;
+  color: #f04c4c;
 }
 
 .blockInfo td {
@@ -86,7 +88,7 @@ h4{
 .generateButton {
   height: 50px;
   font-size: 15px;
-  background-color: #EBD671;
+  background-color: #fce365;
   border-radius: 8px;
   color: black;
   border-color: black;
@@ -99,7 +101,7 @@ h4{
 .updateBlock{
   height: 30px;
   font-size: 15px;
-  background-color: #EBD671;;
+  background-color: #fce365;
   border-radius: 8px;
   color: black;
   border-color: black;
@@ -111,7 +113,7 @@ h4{
 .description{
   height: 30px;
   font-size: 12px;
-  background-color: #EBD671;;
+  background-color: #fce365;
   border-radius: 8px;
   color: black;
   border-color: black;
@@ -183,7 +185,7 @@ h4{
 }
 
 .invalid {
-  background-color: #E85D5D;
+  background-color: #f04c4c;
 }
 
 .messageBox {
@@ -206,9 +208,15 @@ h4{
   width: 500px;
   min-width: 200px;
   background-color: white;
-  border-color: #15cdfc;
-  
 }
+
+.MuiFormLabel-root.Mui-focused {
+  color: #10c4f1 !important;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #10c4f1 !important;
+}
+
 
 .info:hover + .hide {
   display: block;
@@ -237,18 +245,17 @@ h4{
 }
 
 .hackinputPH{
-  overflow-wrap: break-word;
   padding: 2px;
   margin: 7px;
+  min-height: max-content;
   background-color: transparent;
   border-radius: 6px;
+  color: black;
+  overflow-wrap: break-word;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:black;
+  opacity: 1; /* Firefox */
 }
+
